@@ -103,15 +103,16 @@ bool sendHttpPut(char* request) {
   }
 
   client.println(request);
-  client.println("Host: 192.168.4.1");
+  client.println("Host: 192.168.10.1");
   client.println("Content-Type: plain/text");
+  client.println("Connection: keep-alive");
   client.println("Content-length: 0");
   client.println();
 
   client.flush();
 
   bool isHTTPStatusOK = checkIsHTTPStatusOK(client);
-
+  
   client.stop();
 
   return isHTTPStatusOK;

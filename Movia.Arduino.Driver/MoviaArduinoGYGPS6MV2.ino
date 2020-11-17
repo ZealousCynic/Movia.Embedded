@@ -6,5 +6,5 @@ void getGPSReading() {
     }
   }
 
-  wifiGPSRoutine(lat, lon);
+  Serial.println(wifiGPSRoutine(lat, lon));
 }

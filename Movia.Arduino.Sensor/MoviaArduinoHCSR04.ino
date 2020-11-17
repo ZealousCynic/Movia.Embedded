@@ -43,7 +43,8 @@ void getUltrasoundReading() {
  }
  if(currentState2 != previousState2){
  if(currentState2 == 1) {
-  wifiHCSR04Routine("increase");
+  Serial.println("Increase result: ");
+  Serial.println(wifiHCSR04Routine("increase"));
   delay(400); // pause for 1/2 second
  }
  return;
@@ -73,7 +74,8 @@ void getUltrasoundReading() {
  }
   if(currentState != previousState){
   if(currentState == 1) {
-   wifiHCSR04Routine("decrease");
+   Serial.println("Decrease result: ");
+   Serial.println(wifiHCSR04Routine("decrease"));
    
    delay(400); // pause for 1/2 second
   }

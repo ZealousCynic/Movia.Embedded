@@ -5,6 +5,7 @@ void read_rfid() {
     Serial.println("Failed to read MIFARE serial.");
     return;
   }
+  Serial.println("Reading MIFARE card");
   
   status = (MFRC522::StatusCode) mfrc522.PCD_Authenticate(MFRC522::PICC_CMD_MF_AUTH_KEY_A, blockaddress, &key, &(mfrc522.uid));
   status = (MFRC522::StatusCode) mfrc522.MIFARE_Read(blockaddress, mf_buffer, &mf_buf_size);

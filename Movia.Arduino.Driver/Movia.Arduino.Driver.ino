@@ -21,7 +21,7 @@
 
           // -- WIFI -- //
 
-#define HOST "192.168.4.1"
+#define HOST "192.168.10.1"
 
         // ---- CONSTANTS ---- //
 
@@ -32,9 +32,9 @@ const byte blockaddress = 4;
 
             // -- WIFI -- //
         
-const char ssid[] = "Raspberry-Pi-Sensor-Network";
+const char ssid[] = "Raspberry-Pi-Sensor";
 const char password[] = "Pa$$w0rd";
-const char server[] = "192.168.4.1";
+const char server[] = "192.168.10.1";
 
 const int http = 80;
 const int timeout = 10000; // Milliseconds.
@@ -97,6 +97,10 @@ void loop() {
       read_rfid();                  // Call routine to handle it
 
   // ---- GET GPS READING ---- //
+  
+  delay(1000);
 
   getGPSReading();                  // Get GPS reading
+
+  
 }

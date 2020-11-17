@@ -19,23 +19,6 @@ void wifiConnect() {
   Serial.println(IpAddress2String(ip));
 }
 
-bool wifiGPSRoutine(float latitude, float longitude) {
-  if (wifiStatus == WL_CONNECTED) {     
-    
-    char buf[50];
-
-    for(int i = 0; i < 50; i++) {
-      snprintf(buf, 50, "PUT /GPS/%f/%f HTTP/1.1", latitude, longitude );
-     }
-    return sendHttpPut(buf);
-    
-  }
-  else {
-    Serial.println("ERROR, NOT CONNECTED");
-  }
-  return false;
-}
-
 bool wifiHCSR04Routine(char *request) {
   if (wifiStatus == WL_CONNECTED) {
     
@@ -45,24 +28,6 @@ bool wifiHCSR04Routine(char *request) {
       snprintf(buf, 50, "PUT /passenger/%s HTTP/1.1", request);
      }
 
-    return sendHttpPut(buf);
-  }
-  else {
-    Serial.println("ERROR, NOT CONNECTED");    
-  }
-  return false;
-}
-
-bool wifiMFRCRoutine(char *request) {
-  if (wifiStatus == WL_CONNECTED) {
-    
-    char buf[50];
-
-     for(int i = 0; i < 50; i++) {
-      snprintf(buf, 50, "PUT /driver/%s HTTP/1.1", request);
-     }
-
-    Serial.println(buf);
     return sendHttpPut(buf);
   }
   else {
@@ -120,8 +85,9 @@ bool sendHttpPut(char* request) {
   }
 
   client.println(request);
-  client.println("Host: 192.168.4.1");
+  client.println("Host: 192.168.10.1");
   client.println("Content-Type: plain/text");
+  client.println("Connection: keep-alive");
   client.println("Content-length: 0");
   client.println();
 
